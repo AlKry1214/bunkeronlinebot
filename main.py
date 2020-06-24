@@ -26,8 +26,9 @@ bot = telebot.TeleBot('1180948967:AAFDpzg8FdlikhzVwvRLvLd9716-ffHqvxw')  # Кл�
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id,
-                     'Привет! Чтобы начать играть, выбери нужный тебе пункт в клавиатуре данного бота.'
-                     '\n\n version 0.3',
+                     'Привет! Чтобы начать играть, выбери нужный тебе пункт в клавиатуре данного бота. Теперь'
+                     ' БункерОнлайнБот запущен на удаленном сервере'
+                     '\n\n version 0.4',
                      reply_markup=keyboard())
 
 
@@ -144,14 +145,14 @@ def send_text(message):
         bot.send_message(message.chat.id, card2A)
 
     # Вызов ОДЕЖДА
-    elif message.text == 'Изм. Одежду':
-        headA = '\n⁉️Головной убор: ' + random.choice(headList)
-        bodyA = '\n⁉️Торс: ' + random.choice(bodyList)
-        legA = '\n⁉️Ноги: ' + random.choice(legList)
-        bootA = '\n⁉️Обувь: ' + random.choice(bootList)
-        nbA = '\n⁉️Нижнее булье: ' + random.choice(nbList)
-
-        bot.send_message(message.chat.id, '\nОдежда персонажа: ' + headA + bodyA + legA + bootA + nbA)
+    # elif message.text == 'Изм. Одежду':
+    #     headA = '\n⁉️Головной убор: ' + random.choice(headList)
+    #     bodyA = '\n⁉️Торс: ' + random.choice(bodyList)
+    #     legA = '\n⁉️Ноги: ' + random.choice(legList)
+    #     bootA = '\n⁉️Обувь: ' + random.choice(bootList)
+    #     nbA = '\n⁉️Нижнее булье: ' + random.choice(nbList)
+    # 
+    #     bot.send_message(message.chat.id, '\nОдежда персонажа: ' + headA + bodyA + legA + bootA + nbA)
 
     # Вызов Правила
     elif message.text == 'Правила':
@@ -218,7 +219,7 @@ def keyboard():
     btn10 = types.KeyboardButton('Изм. Багаж')
     btn11 = types.KeyboardButton('Изм. Карту Д. 1')
     btn12 = types.KeyboardButton('Изм. Карту Д. 2')
-    btn13 = types.KeyboardButton('Изм. Одежду')
+    # btn13 = types.KeyboardButton('Изм. Одежду')
     btn14 = types.KeyboardButton('Правила')
     markup.add(btn1)
     markup.add(btn2)
@@ -226,7 +227,7 @@ def keyboard():
     markup.add(btn4, btn5)
     markup.add(btn6, btn7)
     markup.add(btn8, btn9)
-    markup.add(btn10, btn13)
+    markup.add(btn10)
     markup.add(btn11, btn12)
     markup.add(btn14)
     return markup
