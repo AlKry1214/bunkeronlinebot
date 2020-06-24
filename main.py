@@ -1,12 +1,13 @@
 import telebot
 import random
-from bunker41.list import crashLow, crashHigh, profList, ageList, rodList, polList, hobbyList, bagazhList, \
+import sqlite3
+from bunker.list import crashLow, crashHigh, profList, ageList, rodList, polList, hobbyList, bagazhList, \
     characterList, healthList, fobiaList, dopInfList, catList, card1List, card2List, bunList, negBunList, negBunLow, \
     negBunHigh, pozBunList, pozBunLow, pozBunHigh, timeBun, bunSLow, bunSHight, populationLow, populationHigh, \
     headList, bodyList, legList, bootList, nbList, heightLow, heightHight, weightLow, weightHight, hairStyleList, \
     relationsList
 from telebot import types
-from telegram import Update
+
 from sty import fg
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 import sys
@@ -16,7 +17,6 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler
 
 bot = telebot.TeleBot('1180948967:AAFDpzg8FdlikhzVwvRLvLd9716-ffHqvxw')  # Ключ этого бота
-update = (Update, )
 
 
 
@@ -43,12 +43,11 @@ def send_text(message):
                          reply_markup=keyboard())
 
 
-    elif message.text == 'Катаклизм': #Подбор Катаклизма
-        crashA = random.randint(crashLow, crashHigh)
-        populationA = random.randint(populationLow, populationHigh)
-        catA = 'Катаклизм: ' + random.choice(catList)
-        bot.send_message(message.chat.id,
-                         f'{catA} \nРазрушение инфраструктуры: {crashA}%. \nНаселения осталось: {populationA}%.',
+    elif message.text == 'Катаклизм':  # Подбор Катаклизма
+        crashA = '\nРазрушение инфраструктуры: ' + str(random.randint(crashLow, crashHigh)) + '%'
+        populationA = '\nНаселения осталось: ' + str(random.randint(populationLow, populationHigh)) + '%'
+        catA = '\nКатаклизм: \n' + str(random.choice(catList))
+        bot.send_message(message.chat.id, catA + crashA + populationA,
                          reply_markup=keyboard())
 
 
@@ -62,7 +61,7 @@ def send_text(message):
         negBunA = '\n➖Минусы бункера: ' + str(random.sample(set(negBunList), negBunH))
 
         bot.send_message(message.chat.id, bunA + timeBunA + pozBunA + negBunA + bunSA,
-        reply_markup=keyboard())
+                         reply_markup=keyboard())
 
 
 
@@ -71,8 +70,8 @@ def send_text(message):
         ageA = '  \nВозвраст: ' + random.choice(ageList)
         rodA = '  \nОтношение к детям: ' + random.choice(rodList)
         hairStyleA = '  \n⁉️Прическа: ' + random.choice(hairStyleList)
-        heightA = '  \n⁉️Рост: ' + str(random.randint(heightLow,heightHight)) + 'см.'
-        weightA = '  \n⁉️Вес: ' + str(random.randint(weightLow,weightHight)) + 'кг.'
+        heightA = '  \n⁉️Рост: ' + str(random.randint(heightLow, heightHight)) + 'см.'
+        weightA = '  \n⁉️Вес: ' + str(random.randint(weightLow, weightHight)) + 'кг.'
         bioA = polA + ageA + rodA + hairStyleA + heightA + weightA
         profA = '  \nПрофессия: ' + random.choice(profList)
         hobbyA = '  \n\nХобби: ' + random.choice(hobbyList)
@@ -90,7 +89,6 @@ def send_text(message):
         bootA = '  \n⁉️Обувь: ' + random.choice(bootList)
         nbA = '  \n⁉️Нижнее булье: ' + random.choice(nbList)
         relationsA = '  \n\nОтношения:  ' + random.choice(relationsList)
-
 
         bot.send_message(message.chat.id, profA + '\n\nБиологическая характеристика: ' + bioA + healthA + fobiaA
                          + hobbyA + characterA + dopInfA + bagazhA + cardA + relationsA +
@@ -233,4 +231,5 @@ def keyboard():
     markup.add(btn14)
     return markup
 
-bot.polling()
+
+bot.polling(none_stop=True, interval=0)
