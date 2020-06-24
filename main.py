@@ -84,16 +84,15 @@ def send_text(message):
         card1A = '  \nКарты действия 1: ' + random.choice(card1List)
         card2A = '  \nКарты действия 2: ' + random.choice(card2List)
         cardA = card1A + card2A
-        headA = '  \n⁉️Головной убор: ' + random.choice(headList)
-        bodyA = '  \n⁉️Торс: ' + random.choice(bodyList)
-        legA = '  \n⁉️Ноги: ' + random.choice(legList)
-        bootA = '  \n⁉️Обувь: ' + random.choice(bootList)
-        nbA = '  \n⁉️Нижнее булье: ' + random.choice(nbList)
+        #headA = '  \n⁉️Головной убор: ' + random.choice(headList)
+        #bodyA = '  \n⁉️Торс: ' + random.choice(bodyList)
+        #legA = '  \n⁉️Ноги: ' + random.choice(legList)
+        #bootA = '  \n⁉️Обувь: ' + random.choice(bootList)
+        #nbA = '  \n⁉️Нижнее булье: ' + random.choice(nbList)
         relationsA = '  \n\nОтношения:  ' + random.choice(relationsList)
 
         bot.send_message(message.chat.id, profA + '\n\nБиологическая характеристика: ' + bioA + healthA + fobiaA
-                         + hobbyA + characterA + dopInfA + bagazhA + cardA + relationsA +
-                         '\n\n⁉️Одежда персонажа: ' + headA + bodyA + legA + bootA + nbA)
+                         + hobbyA + characterA + dopInfA + bagazhA + cardA + relationsA)
 
     # Вызов БИЛОГИЧЕСКОЙ ХАР-КИ
     elif message.text == 'Изм. БИО':
