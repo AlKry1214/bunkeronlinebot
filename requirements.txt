@@ -5,7 +5,7 @@ Django==3.0.7
 docutils==0.16
 packaging==20.4
 pipenv==20.1.1
-psutil==5.0.1
+psutil==5.6.6
 pyowm==2.8.0
 Pygments==2.6.1
 pyparsing==2.4.7
