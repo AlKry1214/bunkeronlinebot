@@ -8,13 +8,7 @@ from list import crashLow, crashHigh, profList, ageList, rodList, polList, hobby
     relationsList
 from telebot import types
 
-from sty import fg
-from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
-import sys
-import requests
-import datetime
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CallbackQueryHandler
+
 
 bot = telebot.TeleBot('1180948967:AAFDpzg8FdlikhzVwvRLvLd9716-ffHqvxw')  # Ключ этого бота
 
