@@ -1,7 +1,7 @@
 import telebot
 import random
 import sqlite3
-from bunker.list import crashLow, crashHigh, profList, ageList, rodList, polList, hobbyList, bagazhList, \
+from list import crashLow, crashHigh, profList, ageList, rodList, polList, hobbyList, bagazhList, \
     characterList, healthList, fobiaList, dopInfList, catList, card1List, card2List, bunList, negBunList, negBunLow, \
     negBunHigh, pozBunList, pozBunLow, pozBunHigh, timeBun, bunSLow, bunSHight, populationLow, populationHigh, \
     headList, bodyList, legList, bootList, nbList, heightLow, heightHight, weightLow, weightHight, hairStyleList, \
